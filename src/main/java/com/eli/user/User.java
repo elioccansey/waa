@@ -13,6 +13,4 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany()
-    private List<Post> posts;
 }

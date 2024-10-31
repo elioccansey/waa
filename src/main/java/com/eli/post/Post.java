@@ -1,5 +1,6 @@
 package com.eli.post;
 
+import com.eli.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,4 +18,9 @@ public class Post {
     private String title;
     private String content;
     private String author;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
