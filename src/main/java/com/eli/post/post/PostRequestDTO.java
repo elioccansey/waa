@@ -1,4 +1,4 @@
-package com.eli.post;
+package com.eli.post.post;
 
 
 import lombok.AllArgsConstructor;
