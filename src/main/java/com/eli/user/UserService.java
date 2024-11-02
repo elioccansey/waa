@@ -2,7 +2,6 @@ package com.eli.user;
 
 import com.eli.post.post.Post;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface UserService {
