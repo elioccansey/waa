@@ -5,6 +5,7 @@ import com.eli.post.post.PostResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,5 +58,26 @@ public class UserController {
                 .toList();
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("{id}")
+    public void deleteUserById(@PathVariable Long id){
+        userService.deleteUserById(id);
+    }
 
+    @GetMapping("posts/more-than/{n}")
+    public ResponseEntity<List<UserResponseDTO>> getUsersWithMoreThanNPosts(@PathVariable Integer n){
+        return ResponseEntity.status(HttpStatus.OK).body(
+                userService.getUsersWithMoreThanNPosts(n)
+                        .stream()
+                        .map(user -> modelMapper.map(user, UserResponseDTO.class))
+                        .toList()
+        );
+    }
+
+    @GetMapping("posts")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserResponseDTO> findDistinctByPosts_Title(@RequestParam String title){
+        return userService.findDistinctByPosts_Title(title)
+                .stream().map(user -> modelMapper.map(user, UserResponseDTO.class)).toList();
+    }
 }

@@ -58,6 +58,15 @@ public class PostController {
                 .toList();
     }
 
+    @GetMapping("filter/title")
+    public List<PostResponseDTO> filterPostsByTitle(@RequestParam(name = "title") String title){
+        return postService.filterPostsByTitle(title).stream()
+                .map( p -> modelMapper.map(p, PostResponseDTO.class))
+                .toList();
+    }
+
+
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/search")
     public List<PostResponseDTO> searchPostsByAuthorNameContaining(@RequestParam(name = "author") String author){

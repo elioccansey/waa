@@ -12,7 +12,6 @@ import java.util.List;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
-    private final ModelMapper modelMapper;
 
     @Override
     public List<Post> getAllPosts() {
@@ -52,6 +51,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> searchPostsByAuthorNameContaining(String authorName) {
         return postRepository.findByAuthorContaining(authorName);
+    }
+
+    @Override
+    public List<Post> filterPostsByTitle(String title) {
+        return postRepository.findByTitle(title);
     }
 
 }

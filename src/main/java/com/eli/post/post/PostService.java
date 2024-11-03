@@ -1,5 +1,8 @@
 package com.eli.post.post;
 
+import com.eli.user.User;
+
+import java.util.Collection;
 import java.util.List;
 
 public interface PostService {
@@ -17,4 +20,5 @@ public interface PostService {
 
     List<Post> searchPostsByAuthorNameContaining(String authorName);
 
+    List<Post> filterPostsByTitle(String title);
 }
