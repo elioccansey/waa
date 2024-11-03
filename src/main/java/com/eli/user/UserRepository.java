@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query(value = "SELECT * FROM users JOIN posts on  users.id = posts.user_id", nativeQuery = true)
+    @Query(value = "SELECT u FROM User u WHERE size(u.posts) > 1 ")
     List<User> findUserWithMoreThanOnePost();
 }
 

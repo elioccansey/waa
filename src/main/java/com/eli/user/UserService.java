@@ -2,6 +2,7 @@ package com.eli.user;
 
 import com.eli.post.post.Post;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface UserService {
@@ -12,4 +13,6 @@ public interface UserService {
     User getUserById(Long id);
 
     List<Post> getPostsByUser(Long id);
+
+    List<User> getUsersWithMoreThanOnePost();
 }

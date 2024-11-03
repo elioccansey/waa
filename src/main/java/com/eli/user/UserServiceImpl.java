@@ -33,5 +33,10 @@ public class UserServiceImpl implements UserService{
     public List<Post> getPostsByUser(Long id) {
         return userRepository.findById(id).map(User::getPosts).orElseThrow(()->new UserNotFoundException("User not found with ID " + id));
     }
+
+    @Override
+    public List<User> getUsersWithMoreThanOnePost() {
+        return userRepository.findUserWithMoreThanOnePost();
+    }
 }
 

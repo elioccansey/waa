@@ -16,7 +16,6 @@ public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
-    private final PostRepository postRepository;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
@@ -42,12 +41,20 @@ public class UserController {
 
     }
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public UserResponseDTO createUser(@RequestBody UserRequestDTO userRequestDTO){
         var createdUser = userService.createUser(modelMapper.map(userRequestDTO, User.class));
         return modelMapper.map(createdUser, UserResponseDTO.class);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("more-than-one")
+    public List<UserResponseDTO> getUsersWithMoreThanOnePost(){
+        return userService.getUsersWithMoreThanOnePost()
+                .stream()
+                .map(user -> modelMapper.map(user, UserResponseDTO.class))
+                .toList();
     }
 
 
