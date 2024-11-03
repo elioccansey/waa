@@ -25,8 +25,4 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Set<Comment> comments;
-
-    @ManyToOne
-    private User user;
-
 }

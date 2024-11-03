@@ -11,5 +11,5 @@ public interface UserService {
 
     User getUserById(Long id);
 
-    List<Post> getPostsByUser(User user);
+    List<Post> getPostsByUser(Long id);
 }

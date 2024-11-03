@@ -1,6 +1,5 @@
 package com.eli.user;
 
-import com.eli.post.post.Post;
 import com.eli.post.post.PostRepository;
 import com.eli.post.post.PostResponseDTO;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +35,7 @@ public class UserController {
 
     @GetMapping("{id}/posts")
     public List<PostResponseDTO> getPostsByUserId(@PathVariable Long id){
-        User user = userService.getUserById(id);
-        return postRepository.findByUser(user)
+        return userService.getPostsByUser(id)
                 .stream()
                 .map(post -> modelMapper.map(post, PostResponseDTO.class))
                 .toList();
