@@ -21,7 +21,7 @@ public class AppExceptionLog {
     private Long id;
     private LocalDateTime dateTime;
     private long executionTime;
-    private String principal;
+    private String principle;
     private String operation;
     private String exceptionType;
 }
