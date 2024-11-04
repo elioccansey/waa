@@ -1,5 +1,6 @@
 package com.eli.user;
 
+import com.eli.logging.ExecutionTime;
 import com.eli.post.post.Post;
 import com.eli.post.post.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
+    @ExecutionTime
     @Override
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(()->new UserNotFoundException("User not found with ID " + id));
